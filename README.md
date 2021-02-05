@@ -1,6 +1,6 @@
-# simple-php-skel
+#ddd-finitions
+DDD abstract concepts and definitions in php for Learning purposes. Based , inspired, copypasted from https://github.com/PcComponentes . 
 
-Para tener facilmente disponible un entorno de desarrollo con php . 
 
 ```shell
 composer --stability=dev  create-project pascualmg/simple-php-skel app 
@@ -8,8 +8,3 @@ cd app
 make build
 make composer_install
 ```
-
-
-
-
-... 4leviandrew ...# ddd-finitions
