@@ -28,3 +28,5 @@ test_unit:
 	    docker-compose exec --user ${UID} ${DOCKER_PHP_SERVICE} vendor/bin/phpunit
 test_unit_coverage:
 	docker-compose exec --user ${UID}:${GID} ${DOCKER_PHP_SERVICE} vendor/bin/phpunit --coverage-text
+test_unit_coverage-html:
+	docker-compose exec --user ${UID}:${GID} ${DOCKER_PHP_SERVICE} vendor/bin/phpunit --coverage-html report
