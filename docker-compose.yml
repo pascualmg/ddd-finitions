@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  php:
+    container_name: php-ddd-finitions
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    environment:
+      - XDEBUG_MODE=coverage
+    volumes:
+      - .:/var/app
+      - ~/.composer:/.composer

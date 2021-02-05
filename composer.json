@@ -1,0 +1,21 @@
+{
+  "license": "LGPL-3.0-or-later",
+  "version": "1.0.0",
+  "name": "pascualmg/ddd-finitions",
+  "description": "not yet" ,
+  "authors": [
+    {
+      "name": "pascual",
+      "email": "pascual.munoz@pccomponentes.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "pascualmg\\dddfinitions\\": "src/"
+    }
+  },
+  "require": {},
+  "require-dev": {
+    "phpunit/phpunit": ">=9.5.2"
+  }
+}
