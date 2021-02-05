@@ -3,8 +3,5 @@ DDD abstract concepts and definitions in php for Learning purposes. Based , insp
 
 
 ```shell
-composer --stability=dev  create-project pascualmg/simple-php-skel app 
-cd app 
-make build
-make composer_install
+composer require ... 
 ```
