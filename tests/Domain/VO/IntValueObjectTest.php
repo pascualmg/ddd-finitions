@@ -12,9 +12,9 @@ class IntValueObjectTest extends TestCase
 {
     public function test_given_when_then()
     {
-        $foo =IntValueObject::fromString("42");
+        $foo =IntValueObject::fromString("41");
         $foo->JsonSerialize();
-        assertEquals(42, $foo->value());
+        assertEquals(41, $foo->value());
     }
 
     public function test_given_when_then_2()

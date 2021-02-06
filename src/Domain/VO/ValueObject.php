@@ -10,11 +10,11 @@ abstract class ValueObject implements \JsonSerializable
 
     private function __construct(mixed $value)
     {
-        $this->assertValueOrThrowException($value);
+        $this->asserts($value);
         $this->value = $value;
     }
 
-    abstract protected function assertValueOrThrowException($value): void;
+    abstract protected function asserts($value): void;
 
     public static function from(mixed $value): static
     {

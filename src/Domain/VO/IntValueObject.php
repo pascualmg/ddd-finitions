@@ -3,6 +3,8 @@
 
 namespace pascualmg\dddfinitions\Domain\VO;
 
+use InvalidArgumentException;
+
 class IntValueObject extends ValueObject
 {
 
@@ -11,11 +13,40 @@ class IntValueObject extends ValueObject
         return self::from((int)$number);
     }
 
-    protected function assertValueOrThrowException($value): void
+    protected function asserts($value): void
     {
-        if (is_integer($value)) {
-            return;
-        }
-        throw new \Exception('Bad type !! IntValueObject from wrong type : ' . gettype($value));
+
+
+
+        $this->assertThat( $value)
+        (
+            assertionCallback: 'is_numeric',
+            reason: "must be numeric",
+        )
+        (
+            'is_integer',
+            "must be integer",
+        );
+
+    }
+
+
+    private static function assertThat(mixed $value): callable
+    {
+        return static function (
+            callable $assertionCallback,
+            string $reason = '',
+            ?string $exceptionToLaunch = null
+        ) use (
+            $value
+        ) {
+            if ($assertionCallback($value)) {
+                return self::assertThat($value);
+            }
+            if (null === $exceptionToLaunch) {
+                throw new InvalidArgumentException("value { $value } , reason { $reason }");
+            }
+            throw new $exceptionToLaunch($reason);
+        };
     }
 }

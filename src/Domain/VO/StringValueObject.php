@@ -5,7 +5,7 @@ namespace pascualmg\dddfinitions\Domain\VO;
 
 class StringValueObject extends ValueObject
 {
-    protected function assertValueOrThrowException($value): void
+    protected function asserts($value): void
     {
         if (is_string($value)) {
             return;
