@@ -3,7 +3,8 @@
 
 namespace pascualmg\dddfinitions\Domain\VO;
 
-use InvalidArgumentException;
+use pascualmg\assert\Assert;
+use pascualmg\assert\Asserts\IsType;
 
 class IntValueObject extends ValueObject
 {
@@ -15,38 +16,8 @@ class IntValueObject extends ValueObject
 
     protected function asserts($value): void
     {
-
-
-
-        $this->assertThat( $value)
-        (
-            assertionCallback: 'is_numeric',
-            reason: "must be numeric",
-        )
-        (
-            'is_integer',
-            "must be integer",
-        );
-
-    }
-
-
-    private static function assertThat(mixed $value): callable
-    {
-        return static function (
-            callable $assertionCallback,
-            string $reason = '',
-            ?string $exceptionToLaunch = null
-        ) use (
-            $value
-        ) {
-            if ($assertionCallback($value)) {
-                return self::assertThat($value);
-            }
-            if (null === $exceptionToLaunch) {
-                throw new InvalidArgumentException("value { $value } , reason { $reason }");
-            }
-            throw new $exceptionToLaunch($reason);
-        };
+        Assert::that($value)
+        (IsType::integer())
+        ('is_numeric');
     }
 }

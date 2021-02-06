@@ -14,7 +14,10 @@
       "pascualmg\\dddfinitions\\": "src/"
     }
   },
-  "require": {},
+  "require": {
+    "php": ">=8.0.0",
+    "pascualmg/assert": "dev-main"
+  },
   "require-dev": {
     "phpunit/phpunit": ">=9.5.2"
   }
