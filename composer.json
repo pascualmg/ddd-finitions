@@ -14,6 +14,11 @@
       "pascualmg\\dddfinitions\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "pascualmg\\dddfinitions\\Tests\\": "tests/"
+    }
+  },
   "require": {
     "php": ">=8.0.0",
     "pascualmg/assert": "dev-main"
