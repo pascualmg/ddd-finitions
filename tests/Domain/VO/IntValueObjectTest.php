@@ -4,17 +4,21 @@ namespace Domain\VO;
 
 use pascualmg\dddfinitions\Domain\VO\IntValueObject;
 use pascualmg\dddfinitions\Domain\VO\StringValueObject;
+use pascualmg\dddfinitions\Tests\Domain\VO\StringMother;
 use PHPUnit\Framework\TestCase;
 
 use function PHPUnit\Framework\assertEquals;
 
 class IntValueObjectTest extends TestCase
 {
-    public function test_given_when_then()
+
+    public function test_given_numeric_string_when_from_string_then_valulue_is_the_same_int()
     {
-        $foo =IntValueObject::fromString("41");
-        $foo->JsonSerialize();
-        assertEquals(41, $foo->value());
+        $numericString = StringMother::numeric();
+        $integer = (int)$numericString;
+
+        $intValueObjectFromNumericString =IntValueObject::fromString($numericString);
+        assertEquals($integer, $intValueObjectFromNumericString->value());
     }
 
     public function test_given_when_then_2()
