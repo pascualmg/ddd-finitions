@@ -17,7 +17,7 @@ class IntValueObject extends ValueObject
     protected function asserts($value): void
     {
         Assert::that($value)
-        (IsType::integer())
-        ('is_numeric');
+        ('is_numeric')
+        (IsType::integer());
     }
 }
