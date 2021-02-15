@@ -3,13 +3,17 @@
 
 namespace pascualmg\dddfinitions\Domain\VO;
 
-class StringValueObject extends ValueObject
+use pascualmg\assert\Assert;
+
+class StringValueObject extends ValueObject implements \Stringable
 {
     protected function asserts($value): void
     {
-        if (is_string($value)) {
-            return;
-        }
-        throw new \Exception('Error : StringValueObject from not string! used : ' . gettype($value));
+        Assert::that($value)('is_string', "{$value} has to be string", \DomainException::class);
+    }
+
+    public function __toString()
+    {
+        return (string)$this->value();
     }
 }
