@@ -6,5 +6,5 @@ namespace pascualmg\dddfinitions\Domain;
 
 interface Nameable
 {
-    public function name() : string;
+    public static function name() : string;
 }
