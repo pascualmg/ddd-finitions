@@ -6,7 +6,7 @@ namespace pascualmg\dddfinitions\Domain;
 
 use JsonSerializable;
 
-abstract class Entity implements Identificable , JsonSerializable
+abstract class Entity implements Identificable , Nameable,  JsonSerializable
 {
 
 }
