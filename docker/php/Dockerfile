@@ -12,9 +12,7 @@ WORKDIR /var/app
 RUN apt-get install -y git
 
 RUN pecl install xdebug &&\
- docker-php-ext-enable xdebug &&\
- echo "xdebug.mode = coverage" >> /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini &&\
- echo "xdebug.client_host = host.docker.internal" >> /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
+ docker-php-ext-enable xdebug
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
 php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" && \

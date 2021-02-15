@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: docker/php/Dockerfile
     environment:
-      - XDEBUG_MODE=coverage
+      - XDEBUG_CONFIG=debug
     volumes:
       - .:/var/app
       - ~/.composer:/.composer
