@@ -18,10 +18,11 @@ abstract class ValueObject implements \JsonSerializable
 
     public static function from(mixed $value): static
     {
-        if (isset($value)) {
-            return new static($value);
+        if(null === $value){
+            $className = static::class;
+            throw new \DomainException("trying to get ValueObject {$className} with null");
         }
-        return new static(null);
+            return new static($value);
     }
 
     public function equals(ValueObject $valueObject): bool
