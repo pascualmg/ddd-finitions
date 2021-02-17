@@ -19,8 +19,10 @@ abstract class AggregateRoot implements Identificable, Nameable
         return $domainEvents;
     }
 
-    final protected function push(DomainEvent $domainEvent): void
+    final protected function pushDomainEvent(DomainEvent ...$domainEvents): void
     {
-        $this->domainEvents[] = $domainEvent;
+        foreach ($domainEvents as $domainEvent) {
+            $this->domainEvents[] = $domainEvent;
+        }
     }
 }
