@@ -20,7 +20,7 @@ abstract class DomainEvent
 
     abstract public static function fromPrimitives(
         string $aggregateId,
-        array $body,
+        array $payload,
         string $eventId,
         string $occurredOn
     ): self;
