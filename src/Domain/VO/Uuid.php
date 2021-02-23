@@ -9,7 +9,7 @@ use pascualmg\assert\Assert;
 class Uuid extends ValueObject implements \Stringable
 {
 
-    public static function random()
+    public static function random(): static
     {
         return self::from(\Ramsey\Uuid\Uuid::uuid4()->toString());
     }
