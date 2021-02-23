@@ -1,10 +1,10 @@
 <?php
 
 
-namespace pascualmg\dddfinitions\Domain;
+namespace Pascualmg\dddfinitions\Domain;
 
 
-use pascualmg\dddfinitions\Domain\VO\Uuid;
+use Pascualmg\dddfinitions\Domain\VO\Uuid;
 
 interface Identificable
 {

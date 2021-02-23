@@ -1,7 +1,7 @@
 <?php
 
 
-namespace pascualmg\dddfinitions\Domain\VO;
+namespace Pascualmg\dddfinitions\Domain\VO;
 
 use pascualmg\assert\Assert;
 

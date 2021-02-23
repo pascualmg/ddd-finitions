@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace pascualmg\dddfinitions\Domain\Bus\Event;
+namespace Pascualmg\dddfinitions\Domain\Bus\Event;
 
-use pascualmg\dddfinitions\Domain\VO\AtomDate;
-use pascualmg\dddfinitions\Domain\VO\Uuid;
+use Pascualmg\dddfinitions\Domain\VO\AtomDate;
+use Pascualmg\dddfinitions\Domain\VO\Uuid;
 
 abstract class DomainEvent
 {

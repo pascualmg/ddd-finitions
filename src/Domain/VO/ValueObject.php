@@ -1,7 +1,7 @@
 <?php
 
 
-namespace pascualmg\dddfinitions\Domain\VO;
+namespace Pascualmg\dddfinitions\Domain\VO;
 
 
 abstract class ValueObject implements \JsonSerializable

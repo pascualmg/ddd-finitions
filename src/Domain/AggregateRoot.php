@@ -1,10 +1,10 @@
 <?php
 
 
-namespace pascualmg\dddfinitions\Domain;
+namespace Pascualmg\dddfinitions\Domain;
 
 
-use pascualmg\dddfinitions\Domain\Bus\Event\DomainEvent;
+use Pascualmg\dddfinitions\Domain\Bus\Event\DomainEvent;
 
 abstract class AggregateRoot implements Identificable, Nameable
 {
