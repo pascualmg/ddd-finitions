@@ -4,7 +4,7 @@
 namespace Pascualmg\dddfinitions\Domain\VO;
 
 
-use pascualmg\assert\Assert;
+use Pascualmg\assert\Assert;
 
 class Uuid extends ValueObject implements \Stringable
 {
