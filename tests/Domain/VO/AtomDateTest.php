@@ -1,8 +1,8 @@
 <?php
 
-namespace pascualmg\dddfinitions\Tests\Domain\VO;
+namespace Pascualmg\dddfinitions\Tests\Domain\VO;
 
-use pascualmg\dddfinitions\Domain\VO\AtomDate;
+use Pascualmg\dddfinitions\Domain\VO\AtomDate;
 use PHPUnit\Framework\TestCase;
 
 class AtomDateTest extends TestCase

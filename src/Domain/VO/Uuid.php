@@ -1,15 +1,15 @@
 <?php
 
 
-namespace pascualmg\dddfinitions\Domain\VO;
+namespace Pascualmg\dddfinitions\Domain\VO;
 
 
-use pascualmg\assert\Assert;
+use Pascualmg\assert\Assert;
 
 class Uuid extends ValueObject implements \Stringable
 {
 
-    public static function random()
+    public static function random(): static
     {
         return self::from(\Ramsey\Uuid\Uuid::uuid4()->toString());
     }

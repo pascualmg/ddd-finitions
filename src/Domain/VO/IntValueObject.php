@@ -1,10 +1,10 @@
 <?php
 
 
-namespace pascualmg\dddfinitions\Domain\VO;
+namespace Pascualmg\dddfinitions\Domain\VO;
 
-use pascualmg\assert\Assert;
-use pascualmg\assert\Asserts\IsType;
+use Pascualmg\assert\Assert;
+use Pascualmg\assert\Asserts\IsType;
 
 class IntValueObject extends ValueObject
 {

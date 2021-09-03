@@ -1,9 +1,10 @@
 <?php
 
 
-namespace pascualmg\dddfinitions\Domain\VO;
+namespace Pascualmg\dddfinitions\Domain\VO;
 
-use pascualmg\assert\Assert;
+
+use Pascualmg\assert\Assert;
 
 class StringValueObject extends ValueObject implements \Stringable
 {

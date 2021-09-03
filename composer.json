@@ -4,18 +4,18 @@
   "description": "DDD definitions for learning based on pccomponentes ",
   "authors": [
     {
-      "name": "pascual",
+      "name": "Pascual Muñoz Galián",
       "email": "pascual.munoz@pccomponentes.com"
     }
   ],
   "autoload": {
     "psr-4": {
-      "pascualmg\\dddfinitions\\": "src/"
+      "Pascualmg\\dddfinitions\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "pascualmg\\dddfinitions\\Tests\\": "tests/"
+      "Pascualmg\\dddfinitions\\Tests\\": "tests/"
     }
   },
   "require": {

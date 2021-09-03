@@ -1,10 +1,9 @@
 <?php
 
-namespace Domain\VO;
+namespace Pascualmg\dddfinitions\Tests\Domain\VO;
 
-use pascualmg\dddfinitions\Domain\VO\IntValueObject;
-use pascualmg\dddfinitions\Domain\VO\StringValueObject;
-use pascualmg\dddfinitions\Tests\Domain\VO\StringMother;
+use Pascualmg\dddfinitions\Domain\VO\IntValueObject;
+use Pascualmg\dddfinitions\Domain\VO\StringValueObject;
 use PHPUnit\Framework\TestCase;
 
 use function PHPUnit\Framework\assertEquals;

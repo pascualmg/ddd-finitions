@@ -1,7 +1,7 @@
 <?php
 
 
-namespace pascualmg\dddfinitions\Tests\Domain\VO;
+namespace Pascualmg\dddfinitions\Tests\Domain\VO;
 
 
 class StringMother

@@ -1,9 +1,9 @@
 <?php
 
-namespace pascualmg\dddfinitions\Tests\Domain\VO;
+namespace Pascualmg\dddfinitions\Tests\Domain\VO;
 
 
-use pascualmg\dddfinitions\Domain\VO\Uuid;
+use Pascualmg\dddfinitions\Domain\VO\Uuid;
 use PHPUnit\Framework\TestCase;
 
 class UuidTest extends TestCase

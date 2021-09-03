@@ -1,11 +1,11 @@
 <?php
 
 
-namespace pascualmg\dddfinitions\Domain\VO;
+namespace Pascualmg\dddfinitions\Domain\VO;
 
 
 use DateTimeInterface;
-use pascualmg\assert\Assert;
+use Pascualmg\assert\Assert;
 
 class AtomDate extends StringValueObject
 {

@@ -2,7 +2,7 @@
 
 namespace Domain\VO;
 
-use pascualmg\dddfinitions\Domain\VO\StringValueObject;
+use Pascualmg\dddfinitions\Domain\VO\StringValueObject;
 use PHPUnit\Framework\TestCase;
 
 class StringValueObjectTest extends TestCase

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace pascualmg\dddfinitions\Domain;
+namespace Pascualmg\dddfinitions\Domain;
 
 
 use JsonSerializable;
