@@ -14,38 +14,12 @@ abstract class Message implements JsonSerializable, Identificable
     private Uuid $id;
     private array $payload;
 
-    public function __construct(Uuid $id, array $payload = [])
+    public function __construct(array $payload = [], ?Uuid $id = null)
     {
-        $this->id = $id;
-        $this->payload = $payload;
-    }
+        $this->id = $id ?? Uuid::random();
 
-    public function id(): Uuid
-    {
-        return $this->id;
-    }
-
-    public function fromJson(string $json): Message
-    {
-        $verifiedJsonDecodedAssocArray = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
-        $this->setPayload($verifiedJsonDecodedAssocArray);
-        return $this;
-    }
-
-    private function setPayload(array $payload): void
-    {
-        $this->assertThatKeyExists($payload, self::ID);
-        $this->assertThatKeyExists($payload, self::PAYLOAD);
         $this->assertPayloadHasOnlyPrimitiveValues($payload);
-
         $this->payload = $payload;
-    }
-
-    private function assertThatKeyExists(array $payload, string $string): void
-    {
-        if (!array_key_exists($string, $payload)) {
-            throw new InvalidArgumentException("The key '$string' is not present in the payload");
-        }
     }
 
     private function assertPayloadHasOnlyPrimitiveValues(array $payload): void
@@ -59,37 +33,55 @@ abstract class Message implements JsonSerializable, Identificable
                     case 'boolean':
                         break;
                     default:
-                        throw new InvalidArgumentException("The value of the key '$key' is not a primitive type");
+                        throw new InvalidArgumentException(
+                            "The value of the key '$key' is not a primitive type used : " . gettype(
+                                $value
+                            ) . ' ' . (is_object($value) ? get_class($value) : '')
+                        );
                 }
             }
         }
     }
 
-    public function fromArray(array $array): Message
+    public function fromJson(string $json): Message
     {
-        $this->assertThatKeyExists($array, self::ID);
-        $this->id = Uuid::from($array[self::ID]);
-        $this->setPayload($array);
-        return $this;
+        $verifiedJsonDecodedAssocArray = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+        return new static($verifiedJsonDecodedAssocArray);
     }
 
-    public function fromJsonString(string $string): Message
+
+    public static function fromArray(array $array): Message
     {
-        $decodedArray = json_decode(json_encode($string), true, 512, JSON_THROW_ON_ERROR);
-        $this->setPayload($decodedArray);
-        return $this;
+        self::assertThatKeyExists($array, self::ID);
+        self::assertThatKeyExists($array, self::PAYLOAD);
+        return new static($array[self::PAYLOAD], $array[self::ID]);
     }
 
-    public function jsonSerialize()
+    private static function assertThatKeyExists(array $payload, string $string): void
     {
-        return $this->payload;
+        if (!array_key_exists($string, $payload)) {
+            throw new InvalidArgumentException("The key '$string' is not present in the payload");
+        }
+    }
+
+    public function id(): Uuid
+    {
+        return $this->id;
+    }
+
+
+
+    public function jsonSerialize(): array
+    {
+        return $this->payload();
     }
 
     public function payload(): array
     {
         return $this->payload;
     }
-    abstract public function type(): MessageType;
-    abstract public function name(): string;
 
+    abstract public function type(): MessageType;
+
+    abstract public function name(): string;
 }

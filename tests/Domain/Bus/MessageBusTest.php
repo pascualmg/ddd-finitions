@@ -7,7 +7,6 @@ use pascualmg\dddfinitions\Domain\Bus\Message;
 use pascualmg\dddfinitions\Domain\Bus\MessageBus;
 use pascualmg\dddfinitions\Domain\Bus\MessageSubscriber;
 use pascualmg\dddfinitions\Domain\Bus\MessageType;
-use pascualmg\dddfinitions\Domain\ValueObject\Name;
 use pascualmg\dddfinitions\Domain\ValueObject\Uuid;
 use PHPUnit\Framework\TestCase;
 
@@ -20,19 +19,26 @@ class MessageBusTest extends TestCase
 
     public function test_given_a_message_when_publish_then_the_message_is_published(): void
     {
+        $messageToPublish = new ($this->someMesage)();
+
+        $messageToPublish = ($this->someMesage)::fromArray([
+                                                               'id' => Uuid::random(),
+                                                               'payload' => [
+                                                                   'foo' => 'bar',
+                                                               ]
+                                                           ]);
+
         $this->messageBus->subscribe($this->spySubscriber);
-        $this->messageBus->dispatch($this->someMesage);
+        $this->messageBus->dispatch($messageToPublish);
 
-        self::assertEquals(1,$this->spySubscriber->counter);
-
+        self::assertEquals(1, $this->spySubscriber->counter);
     }
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->spySubscriber = new class implements DomainEventSubscriber
-        {
-            public  int $counter = 0;
+        $this->spySubscriber = new class implements DomainEventSubscriber {
+            public int $counter = 0;
 
             public function __invoke(Message $domainEvent): void
             {
@@ -71,7 +77,7 @@ class MessageBusTest extends TestCase
 
             public function __construct()
             {
-                parent::__construct(Uuid::random(), []);
+                parent::__construct([]);
             }
 
 
@@ -82,7 +88,6 @@ class MessageBusTest extends TestCase
 
             public function name(): string
             {
-
                 return self::SOME_EVENNT;
             }
         };
