@@ -1,6 +1,6 @@
 <?php
 
-namespace Pascualmg\dddfinitions\Tests\Domain\VO;
+namespace pascualmg\dddfinitions\Tests\Domain\VO;
 
 
 use pascualmg\dddfinitions\Domain\ValueObject\Uuid;

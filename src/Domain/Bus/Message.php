@@ -89,7 +89,7 @@ abstract class Message implements JsonSerializable, Identificable
     {
         return $this->payload;
     }
-    abstract protected function type(): MessageType;
-    abstract protected function name(): string;
+    abstract public function type(): MessageType;
+    abstract public function name(): string;
 
 }
