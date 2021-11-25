@@ -23,7 +23,7 @@ class MessageBusTest extends TestCase
         $this->messageBus->subscribe($this->spySubscriber);
         $this->messageBus->dispatch($this->someMesage);
 
-        self::assertEquals(1,1);
+        self::assertEquals(1,$this->spySubscriber->counter);
 
     }
 
@@ -32,11 +32,12 @@ class MessageBusTest extends TestCase
         parent::setUp();
         $this->spySubscriber = new class implements DomainEventSubscriber
         {
-
+            public  int $counter = 0;
 
             public function __invoke(Message $domainEvent): void
             {
                 echo 'rula';
+                $this->counter++;
             }
 
             public function isSubscribedTo(Message $message): bool
