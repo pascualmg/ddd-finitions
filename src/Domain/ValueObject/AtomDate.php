@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Pascualmg\dddfinitions\Domain\VO;
+namespace pascualmg\dddfinitions\Domain\ValueObject;
 
 
 use DateTimeInterface;
@@ -33,5 +33,10 @@ class AtomDate extends StringValueObject
     public static function now(): static
     {
         return self::from((new \DateTimeImmutable())->format(self::FORMAT));
+    }
+
+    public function JsonSerialize(): string
+    {
+        return $this->value();
     }
 }

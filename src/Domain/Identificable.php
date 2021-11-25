@@ -4,7 +4,7 @@
 namespace Pascualmg\dddfinitions\Domain;
 
 
-use Pascualmg\dddfinitions\Domain\VO\Uuid;
+use pascualmg\dddfinitions\Domain\ValueObject\Uuid;
 
 interface Identificable
 {

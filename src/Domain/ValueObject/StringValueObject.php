@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Pascualmg\dddfinitions\Domain\VO;
+namespace pascualmg\dddfinitions\Domain\ValueObject;
 
 
 use Pascualmg\assert\Assert;
@@ -14,6 +14,11 @@ class StringValueObject extends ValueObject implements \Stringable
     }
 
     public function __toString()
+    {
+        return (string)$this->value();
+    }
+
+    public function jsonSerialize() : string
     {
         return (string)$this->value();
     }

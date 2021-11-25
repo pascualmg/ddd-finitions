@@ -10,12 +10,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "Pascualmg\\dddfinitions\\": "src/"
+      "pascualmg\\dddfinitions\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Pascualmg\\dddfinitions\\Tests\\": "tests/"
+      "pascualmg\\dddfinitions\\Tests\\": "tests/"
     }
   },
   "require": {

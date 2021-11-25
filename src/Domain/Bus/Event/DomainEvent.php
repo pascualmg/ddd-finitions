@@ -2,45 +2,40 @@
 
 declare(strict_types=1);
 
-namespace Pascualmg\dddfinitions\Domain\Bus\Event;
+namespace pascualmg\dddfinitions\Domain\Bus\Event;
 
-use Pascualmg\dddfinitions\Domain\VO\AtomDate;
-use Pascualmg\dddfinitions\Domain\VO\Uuid;
+use pascualmg\dddfinitions\Domain\Bus\Message;
+use pascualmg\dddfinitions\Domain\Bus\MessageType;
+use pascualmg\dddfinitions\Domain\ValueObject\AtomDate;
+use pascualmg\dddfinitions\Domain\ValueObject\Uuid;
 
-abstract class DomainEvent
+abstract class DomainEvent extends Message
 {
-    private string $eventId;
-    private AtomDate $occurredOn;
 
-    public function __construct(private string $aggregateId, string $eventId = null, string $occurredOn = null)
+    public function __construct(
+        private Uuid $aggregateId,
+        private ?AtomDate $occurredOn = null
+    )
     {
-        $this->eventId    = $eventId ?: (string)Uuid::random();
+        parent::__construct(Uuid::random(), []);
         $this->occurredOn = $occurredOn ?: AtomDate::now();
     }
 
-    abstract public static function fromPrimitives(
-        string $aggregateId,
-        array $payload,
-        string $eventId,
-        string $occurredOn
-    ): self;
 
-    abstract public static function eventName(): string;
 
-    abstract public function toPrimitives(): array;
-
-    public function aggregateId(): string
+    public function aggregateId(): Uuid
     {
         return $this->aggregateId;
     }
 
-    public function eventId(): string
+    public function occurredOn(): AtomDate
     {
-        return $this->eventId;
+        return $this->occurredOn;
     }
 
-    public function occurredOn(): string
+    public function type(): MessageType
     {
-        return (string)$this->occurredOn;
+        return MessageType::from(MessageType::DOMAIN_EVENT);
     }
+
 }

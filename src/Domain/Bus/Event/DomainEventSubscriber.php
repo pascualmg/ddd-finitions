@@ -1,11 +1,16 @@
 <?php
 
 
-namespace Pascualmg\dddfinitions\Domain\Bus\Event;
+namespace pascualmg\dddfinitions\Domain\Bus\Event;
 
 
-interface DomainEventSubscriber
+use pascualmg\dddfinitions\Domain\Bus\Message;
+use pascualmg\dddfinitions\Domain\Bus\MessageSubscriber;
+
+interface DomainEventSubscriber extends MessageSubscriber
 {
     /** @return string[] with the classNames of DomainEvents */
-    public function subscribedToEvent(): array;
+    public function subscribedTo(): array;
+
+    public function __invoke(Message $domainEvent): mixed;
 }

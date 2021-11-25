@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Pascualmg\dddfinitions\Domain;
+namespace pascualmg\dddfinitions\Domain;
 
 
 use JsonSerializable;
 
-abstract class Entity implements Identificable , Nameable,  JsonSerializable
+abstract class Entity implements Identificable , Nombrable, JsonSerializable
 {
 
 }

@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Pascualmg\dddfinitions\Domain;
+namespace pascualmg\dddfinitions\Domain;
 
 
-use Pascualmg\dddfinitions\Domain\Bus\Event\DomainEvent;
+use pascualmg\dddfinitions\Domain\Bus\Event\DomainEvent;
 
-abstract class AggregateRoot implements Identificable, Nameable
+abstract class AggregateRoot extends Entity
 {
     /** @var DomainEvent[] */
     private array $domainEvents = [];
