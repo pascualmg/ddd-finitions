@@ -10,10 +10,12 @@ class StringValueObject extends ValueObject implements \Stringable
 {
     protected function asserts($value): void
     {
-        Assert::that($value)('is_string', "{$value} has to be string", \DomainException::class);
+        if(!is_string($value)){
+            throw new \InvalidArgumentException('The value is not a string');
+        }
     }
 
-    public function __toString()
+    public function __toString() : string
     {
         return (string)$this->value();
     }

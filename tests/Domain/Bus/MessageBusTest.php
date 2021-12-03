@@ -2,7 +2,7 @@
 
 namespace pascualmg\dddfinitions\Tests\Domain\Bus;
 
-use pascualmg\dddfinitions\Domain\Bus\Event\DomainEventSubscriber;
+use pascualmg\dddfinitions\Domain\Bus\DomainEventSubscriber;
 use pascualmg\dddfinitions\Domain\Bus\Message;
 use pascualmg\dddfinitions\Domain\Bus\MessageBus;
 use pascualmg\dddfinitions\Domain\Bus\MessageSubscriber;
@@ -37,7 +37,7 @@ class MessageBusTest extends TestCase
     {
         parent::setUp();
 
-        $this->spySubscriber = new class implements DomainEventSubscriber {
+        $this->spySubscriber = new class extends DomainEventSubscriber {
             public int $counter = 0;
 
             public function __invoke(Message $domainEvent): void

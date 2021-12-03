@@ -14,4 +14,8 @@ abstract class EnumValueObject extends StringValueObject
             throw new \InvalidArgumentException("Invalid value for enum: $value" . PHP_EOL . "Valid values: " . implode(', ', $this->validValues));
         }
     }
+    public function __call(string $name, array $arguments)
+    {
+        self::from($name);
+    }
 }

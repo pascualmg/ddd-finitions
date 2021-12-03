@@ -2,26 +2,27 @@
 
 declare(strict_types=1);
 
-namespace pascualmg\dddfinitions\Domain\Bus\Event;
+namespace pascualmg\dddfinitions\Domain\Bus;
 
-use pascualmg\dddfinitions\Domain\Bus\Message;
 use pascualmg\dddfinitions\Domain\ValueObject\AtomDate;
+use pascualmg\dddfinitions\Domain\ValueObject\Name;
 use pascualmg\dddfinitions\Domain\ValueObject\Uuid;
 
 abstract class DomainEvent extends Message
 {
 
-    public const MESSAGE_TYPE = 'domain_event';
-
     public function __construct(
         private Uuid $aggregateId,
         private ?AtomDate $occurredOn = null
-    )
-    {
-        parent::__construct([], Uuid::random());
+    ) {
+        parent::__construct(
+            [
+                'aggregateId' => $this->aggregateId,
+                'occurredOn' => $this->occurredOn
+            ]
+        );
         $this->occurredOn = $occurredOn ?: AtomDate::now();
     }
-
 
 
     public function aggregateId(): Uuid
@@ -34,7 +35,12 @@ abstract class DomainEvent extends Message
         return $this->occurredOn;
     }
 
-    public function type():string{
-        return self::MESSAGE_TYPE;
+    public function type(): string
+    {
+        return self::class;
+    }
+    public static function name(): Name
+    {
+        return Name::from(static::class);
     }
 }

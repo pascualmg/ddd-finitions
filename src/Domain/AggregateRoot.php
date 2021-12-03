@@ -4,19 +4,19 @@
 namespace pascualmg\dddfinitions\Domain;
 
 
-use pascualmg\dddfinitions\Domain\Bus\Event\DomainEvent;
+use pascualmg\dddfinitions\Domain\Bus\DomainEvent;
 
 abstract class AggregateRoot extends Entity
 {
-    /** @var DomainEvent[] */
     private array $domainEvents = [];
 
     final public function popAndFlushAllDomainEvents(): array
     {
-        $domainEvents = $this->domainEvents;
+        $domainEventsToPop = $this->domainEvents;
+        unset($this->domainEvents);
         $this->domainEvents = [];
 
-        return $domainEvents;
+        return $domainEventsToPop;
     }
 
     final protected function pushDomainEvent(DomainEvent ...$domainEvents): void
