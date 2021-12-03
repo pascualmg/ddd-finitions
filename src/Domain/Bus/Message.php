@@ -5,9 +5,10 @@ namespace pascualmg\dddfinitions\Domain\Bus;
 use InvalidArgumentException;
 use JsonSerializable;
 use pascualmg\dddfinitions\Domain\Identificable;
+use pascualmg\dddfinitions\Domain\Nombrable;
 use pascualmg\dddfinitions\Domain\ValueObject\Uuid;
 
-abstract class Message implements JsonSerializable, Identificable, Typable
+abstract class Message implements JsonSerializable, Identificable, Typable, Nombrable
 {
     public const ID = 'id';
     public const PAYLOAD = 'payload';
@@ -78,8 +79,4 @@ abstract class Message implements JsonSerializable, Identificable, Typable
     {
         return $this->payload;
     }
-
-    abstract public function type(): string;
-
-    abstract public function name(): string;
 }

@@ -6,7 +6,7 @@ use pascualmg\dddfinitions\Domain\Bus\Event\DomainEventSubscriber;
 use pascualmg\dddfinitions\Domain\Bus\Message;
 use pascualmg\dddfinitions\Domain\Bus\MessageBus;
 use pascualmg\dddfinitions\Domain\Bus\MessageSubscriber;
-use pascualmg\dddfinitions\Domain\Bus\MessageType;
+use pascualmg\dddfinitions\Domain\ValueObject\Name;
 use pascualmg\dddfinitions\Domain\ValueObject\StringValueObject;
 use pascualmg\dddfinitions\Domain\ValueObject\Uuid;
 use PHPUnit\Framework\TestCase;
@@ -20,7 +20,6 @@ class MessageBusTest extends TestCase
 
     public function test_given_a_message_when_publish_then_the_message_is_published(): void
     {
-
         $messageToPublish = ($this->someMesage)::fromArray([
                                                                'id' => Uuid::random(),
                                                                'payload' => [
@@ -49,7 +48,7 @@ class MessageBusTest extends TestCase
 
             public function isSubscribedTo(Message $message): bool
             {
-                return $message->name() === 'some_action';
+                return $message->name()->equals(StringValueObject::from('some_action'));
             }
 
         };
@@ -78,9 +77,10 @@ class MessageBusTest extends TestCase
             {
                 return 'some_type_of_event';
             }
-            public function name(): string
+
+            public static function name(): Name
             {
-                return 'some_action';
+                return Name::from('some_action');
             }
         };
     }
