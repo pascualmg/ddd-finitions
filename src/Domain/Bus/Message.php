@@ -7,7 +7,7 @@ use JsonSerializable;
 use pascualmg\dddfinitions\Domain\Identificable;
 use pascualmg\dddfinitions\Domain\ValueObject\Uuid;
 
-abstract class Message implements JsonSerializable, Identificable
+abstract class Message implements JsonSerializable, Identificable, Typable
 {
     public const ID = 'id';
     public const PAYLOAD = 'payload';
@@ -50,7 +50,7 @@ abstract class Message implements JsonSerializable, Identificable
     }
 
 
-    public static function fromArray(array $array): Message
+    public static function fromArray(array $array): static
     {
         self::assertThatKeyExists($array, self::ID);
         self::assertThatKeyExists($array, self::PAYLOAD);
@@ -69,8 +69,6 @@ abstract class Message implements JsonSerializable, Identificable
         return $this->id;
     }
 
-
-
     public function jsonSerialize(): array
     {
         return $this->payload();
@@ -81,7 +79,7 @@ abstract class Message implements JsonSerializable, Identificable
         return $this->payload;
     }
 
-    abstract public function type(): MessageType;
+    abstract public function type(): string;
 
     abstract public function name(): string;
 }

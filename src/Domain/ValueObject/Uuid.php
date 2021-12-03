@@ -15,7 +15,7 @@ class Uuid extends StringValueObject
 
     protected function asserts($value): void
     {
-        if(null === $value) {
+        if(is_null($value)) {
             throw new \InvalidArgumentException('Uuid cannot be null');
         }
         if( RamseyUuid::isValid($value) ) {
