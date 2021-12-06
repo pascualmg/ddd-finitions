@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Pascualmg\dddfinitions\Domain;
+namespace pascualmg\dddfinitions\Domain\Interfaces;
 
 
 use pascualmg\dddfinitions\Domain\ValueObject\Uuid;

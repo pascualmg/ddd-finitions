@@ -1,7 +1,7 @@
 <?php
 
 
-namespace pascualmg\dddfinitions\Domain;
+namespace pascualmg\dddfinitions\Domain\Model;
 
 
 use pascualmg\dddfinitions\Domain\Bus\DomainEvent;

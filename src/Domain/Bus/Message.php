@@ -4,8 +4,8 @@ namespace pascualmg\dddfinitions\Domain\Bus;
 
 use InvalidArgumentException;
 use JsonSerializable;
-use pascualmg\dddfinitions\Domain\Identificable;
-use pascualmg\dddfinitions\Domain\Nombrable;
+use pascualmg\dddfinitions\Domain\Interfaces\Identificable;
+use pascualmg\dddfinitions\Domain\Interfaces\Nombrable;
 use pascualmg\dddfinitions\Domain\ValueObject\Uuid;
 
 abstract class Message implements JsonSerializable, Identificable, Typable, Nombrable

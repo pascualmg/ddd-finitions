@@ -1,8 +1,6 @@
 <?php
 
-namespace pascualmg\dddfinitions\Domain\Bus;
-
-use pascualmg\dddfinitions\Domain\ValueObject\StringValueObject;
+namespace pascualmg\dddfinitions\Domain\ValueObject;
 
 abstract class EnumValueObject extends StringValueObject
 {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace pascualmg\dddfinitions\Domain;
+namespace pascualmg\dddfinitions\Domain\Interfaces;
 
 
 use pascualmg\dddfinitions\Domain\ValueObject\Name;
