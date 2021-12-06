@@ -6,6 +6,7 @@ use InvalidArgumentException;
 use JsonSerializable;
 use pascualmg\dddfinitions\Domain\Interfaces\Identificable;
 use pascualmg\dddfinitions\Domain\Interfaces\Nombrable;
+use pascualmg\dddfinitions\Domain\Interfaces\Typable;
 use pascualmg\dddfinitions\Domain\ValueObject\Uuid;
 
 abstract class Message implements JsonSerializable, Identificable, Typable, Nombrable

@@ -1,6 +1,6 @@
 <?php
 
-namespace pascualmg\dddfinitions\Domain\Bus;
+namespace pascualmg\dddfinitions\Domain\Interfaces;
 
 interface Typable
 {
