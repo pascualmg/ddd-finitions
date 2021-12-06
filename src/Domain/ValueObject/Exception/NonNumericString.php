@@ -14,8 +14,4 @@ class NonNumericString extends \InvalidArgumentException
     {
         return new self($nonNumericString);
     }
-
-    public static function withValue(mixed $value)
-    {
-    }
 }
