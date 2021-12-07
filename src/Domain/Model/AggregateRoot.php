@@ -4,7 +4,7 @@
 namespace pascualmg\dddfinitions\Domain\Model;
 
 
-use pascualmg\dddfinitions\Domain\Bus\DomainEvent;
+use pascualmg\dddfinitions\Domain\Bus\Event\DomainEvent;
 
 abstract class AggregateRoot extends Entity
 {

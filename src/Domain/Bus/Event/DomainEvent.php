@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace pascualmg\dddfinitions\Domain\Bus;
+namespace pascualmg\dddfinitions\Domain\Bus\Event;
 
+use pascualmg\dddfinitions\Domain\Bus\Message;
 use pascualmg\dddfinitions\Domain\ValueObject\AtomDate;
 use pascualmg\dddfinitions\Domain\ValueObject\Uuid;
 

@@ -1,8 +1,11 @@
 <?php
 
 
-namespace pascualmg\dddfinitions\Domain\Bus;
+namespace pascualmg\dddfinitions\Domain\Bus\Event;
 
+
+use pascualmg\dddfinitions\Domain\Bus\Message;
+use pascualmg\dddfinitions\Domain\Bus\MessageSubscriber;
 
 abstract class DomainEventSubscriber implements MessageSubscriber
 {
