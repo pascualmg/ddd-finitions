@@ -2,7 +2,6 @@
 
 namespace pascualmg\dddfinitions\Tests\Domain\Bus;
 
-use pascualmg\dddfinitions\Domain\Bus\DomainEventSubscriber;
 use pascualmg\dddfinitions\Domain\Bus\Message;
 use pascualmg\dddfinitions\Domain\Bus\MessageBus;
 use pascualmg\dddfinitions\Domain\Bus\MessageSubscriber;
@@ -37,10 +36,10 @@ class MessageBusTest extends TestCase
     {
         parent::setUp();
 
-        $this->spySubscriber = new class extends DomainEventSubscriber {
+        $this->spySubscriber = new class implements MessageSubscriber {
             public int $counter = 0;
 
-            public function __invoke(Message $domainEvent): void
+            public function __invoke(Message $notifiedMessage): void
             {
                 echo 'rula';
                 $this->counter++;
@@ -48,7 +47,7 @@ class MessageBusTest extends TestCase
 
             public function isSubscribedTo(Message $message): bool
             {
-                return $message->name()->equals(StringValueObject::from('some_action'));
+                return $message->name()->equals('some_action');
             }
 
         };

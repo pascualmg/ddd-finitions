@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace pascualmg\dddfinitions\Domain\Bus;
 
 use pascualmg\dddfinitions\Domain\ValueObject\AtomDate;
-use pascualmg\dddfinitions\Domain\ValueObject\Name;
 use pascualmg\dddfinitions\Domain\ValueObject\Uuid;
 
 abstract class DomainEvent extends Message
@@ -24,7 +23,6 @@ abstract class DomainEvent extends Message
         $this->occurredOn = $occurredOn ?: AtomDate::now();
     }
 
-
     public function aggregateId(): Uuid
     {
         return $this->aggregateId;
@@ -33,14 +31,5 @@ abstract class DomainEvent extends Message
     public function occurredOn(): AtomDate
     {
         return $this->occurredOn;
-    }
-
-    public function type(): string
-    {
-        return self::class;
-    }
-    public static function name(): Name
-    {
-        return Name::from(static::class);
     }
 }

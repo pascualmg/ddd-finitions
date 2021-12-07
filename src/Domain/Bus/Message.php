@@ -7,6 +7,7 @@ use JsonSerializable;
 use pascualmg\dddfinitions\Domain\Interfaces\Identificable;
 use pascualmg\dddfinitions\Domain\Interfaces\Nombrable;
 use pascualmg\dddfinitions\Domain\Interfaces\Typable;
+use pascualmg\dddfinitions\Domain\ValueObject\Name;
 use pascualmg\dddfinitions\Domain\ValueObject\Uuid;
 
 abstract class Message implements JsonSerializable, Identificable, Typable, Nombrable
@@ -45,13 +46,6 @@ abstract class Message implements JsonSerializable, Identificable, Typable, Nomb
         }
     }
 
-    public function fromJson(string $json): Message
-    {
-        $verifiedJsonDecodedAssocArray = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
-        return new static($verifiedJsonDecodedAssocArray);
-    }
-
-
     public static function fromArray(array $array): static
     {
         self::assertThatKeyExists($array, self::ID);
@@ -64,6 +58,17 @@ abstract class Message implements JsonSerializable, Identificable, Typable, Nomb
         if (!array_key_exists($string, $payload)) {
             throw new InvalidArgumentException("The key '$string' is not present in the payload");
         }
+    }
+
+    public static function name(): Name
+    {
+        return Name::from(static::class);
+    }
+
+    public function fromJson(string $json): Message
+    {
+        $verifiedJsonDecodedAssocArray = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+        return new static($verifiedJsonDecodedAssocArray);
     }
 
     public function id(): Uuid
@@ -79,5 +84,10 @@ abstract class Message implements JsonSerializable, Identificable, Typable, Nomb
     public function payload(): array
     {
         return $this->payload;
+    }
+
+    public function type(): string
+    {
+        return self::class;
     }
 }
