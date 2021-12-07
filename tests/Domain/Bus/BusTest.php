@@ -9,7 +9,7 @@ use pascualmg\dddfinitions\Domain\ValueObject\Name;
 use pascualmg\dddfinitions\Domain\ValueObject\Uuid;
 use PHPUnit\Framework\TestCase;
 
-class MessageBusTest extends TestCase
+class BusTest extends TestCase
 {
     private $messageBus;
 
