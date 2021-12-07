@@ -3,7 +3,7 @@
 namespace pascualmg\dddfinitions\Tests\Domain\Bus;
 
 use pascualmg\dddfinitions\Domain\Bus\Message;
-use pascualmg\dddfinitions\Domain\Bus\MessageBus;
+use pascualmg\dddfinitions\Domain\Bus\Bus;
 use pascualmg\dddfinitions\Domain\Bus\MessageSubscriber;
 use pascualmg\dddfinitions\Domain\ValueObject\Name;
 use pascualmg\dddfinitions\Domain\ValueObject\Uuid;
@@ -51,7 +51,7 @@ class MessageBusTest extends TestCase
 
         };
 
-        $this->messageBus = new class implements MessageBus {
+        $this->messageBus = new class implements Bus {
             private array $subscribers = [];
 
             public function dispatch(Message $message): void
