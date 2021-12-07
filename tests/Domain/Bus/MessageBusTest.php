@@ -6,7 +6,6 @@ use pascualmg\dddfinitions\Domain\Bus\Message;
 use pascualmg\dddfinitions\Domain\Bus\MessageBus;
 use pascualmg\dddfinitions\Domain\Bus\MessageSubscriber;
 use pascualmg\dddfinitions\Domain\ValueObject\Name;
-use pascualmg\dddfinitions\Domain\ValueObject\StringValueObject;
 use pascualmg\dddfinitions\Domain\ValueObject\Uuid;
 use PHPUnit\Framework\TestCase;
 
