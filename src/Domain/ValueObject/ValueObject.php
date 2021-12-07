@@ -21,9 +21,13 @@ abstract class ValueObject implements \JsonSerializable
         return new static($value);
     }
 
-    public function equals(ValueObject $valueObject): bool
+    public function equals(ValueObject | int | string | bool | array  $value): bool
     {
-        return $valueObject->jsonSerialize() === $this->jsonSerialize();
+        if($value instanceof self) {
+            return $value->jsonSerialize() === $this->jsonSerialize();
+        }
+
+        return $value === $this->jsonSerialize();
     }
 
     public function value()
