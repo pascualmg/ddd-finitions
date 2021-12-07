@@ -16,7 +16,7 @@ class MessageBusTest extends TestCase
     private Message $someMesage;
     private MessageSubscriber $spySubscriber;
 
-    public function test_given_a_message_when_publish_then_the_message_is_published(): void
+    public function test_given_a_message_when_publish_to_a_bus_with_a_subscriber_then_the_message_is_published_and_the_subscriber_handle_the_message(): void
     {
         $messageToPublish = ($this->someMesage)::fromArray([
                                                                'id' => Uuid::random(),
